@@ -1,0 +1,44 @@
+﻿@model IEnumerable<NorthwindCorp.Models.Product>
+@{
+  ViewData["Title"] = "Product Page";
+}
+
+<div class="text-center">
+  <h1 class="display-4 font-weight-bold">Our products</h1>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">SupplierName</th>
+      <th scope="col">CategoryName</th>
+      <th scope="col">QuantityPerUnit</th>
+      <th scope="col">UnitPrice</th>
+      <th scope="col">UnitsInStock</th>
+      <th scope="col">UnitsOnOrder</th>
+      <th scope="col">ReorderLevel</th>
+      <th scope="col">Discontinued</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{ int i = 1;}
+    @foreach (var product in @Model)
+    {
+      <tr>
+        <th scope="row">@i</th>
+        <td>@product.Name</td>
+        <td>@product.SupplierName</td>
+        <td>@product.CategoryName</td>
+        <td>@product.QuantityPerUnit</td>
+        <td>@Format.ToMoney(@product.UnitPrice)</td>
+        <td>@product.UnitsInStock</td>
+        <td>@product.UnitsOnOrder</td>
+        <td>@product.ReorderLevel</td>
+        <td>@Format.ToYesNo(@product.Discontinued)</td>
+      </tr>
+      { i++;}
+    }
+  </tbody>
+</table>

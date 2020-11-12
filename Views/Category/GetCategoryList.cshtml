@@ -1,0 +1,18 @@
+﻿@model IEnumerable<NorthwindCorp.Models.Category>
+@{
+  ViewData["Title"] = "Category Page";
+}
+
+<div class="text-center">
+  <h1 class="display-4 font-weight-bold">Categories</h1>
+</div>
+
+<ul class="list-group  align-items-center ">
+  @foreach (var category in Model)
+  {
+    <li class="list-group-item list-group-item-action w-50 cursor-pointer">
+      <p class="text-uppercase font-weight-bold">@category.Name</p>
+      <p class="font-weight-light">@category.Description</p>
+    </li>
+  }
+</ul>
