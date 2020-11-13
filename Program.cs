@@ -17,6 +17,8 @@ namespace NorthwindCorp
     {
       Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+        .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Warning)
+        .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
         .Enrich.FromLogContext()
         .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
         .CreateLogger();

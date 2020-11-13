@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
 using NorthwindCorp.Models;
 using NorthwindCorp.Services;
 
@@ -9,9 +10,11 @@ namespace NorthwindCorp.Controllers
   public class ProductController : Controller
   {
     private ProductService _productService;
+    private ILogger<ProductController> _logger;
 
-    public ProductController(ProductService productService)
+    public ProductController(ProductService productService, ILogger<ProductController> logger)
     {
+      _logger = logger;
       _productService = productService;
     }
 
@@ -31,6 +34,7 @@ namespace NorthwindCorp.Controllers
 
       if (product == null)
       {
+        _logger.LogError($"Can't get product with id={id}");
         return RedirectToAction("Error", "Home");
       }
       return View(product);
@@ -59,6 +63,7 @@ namespace NorthwindCorp.Controllers
 
       if (result == false)
       {
+        _logger.LogError($"Creating new product fails");
         return RedirectToAction("Error", "Home");
       }
 
@@ -73,6 +78,7 @@ namespace NorthwindCorp.Controllers
 
       if (product == null)
       {
+        _logger.LogError($"Can't update product with id={id}");
         return RedirectToAction("Error", "Home");
       }
 
@@ -96,6 +102,7 @@ namespace NorthwindCorp.Controllers
       
       if (!int.TryParse(HttpContext.GetRouteValue("id")?.ToString(), out int id))
       {
+        _logger.LogError($"Can't retrieve product id");
         return RedirectToAction("Error", "Home");
       }
       
@@ -103,6 +110,7 @@ namespace NorthwindCorp.Controllers
 
       if (result == false)
       {
+        _logger.LogError($"Updating product fails");
         return RedirectToAction("Error", "Home");
       }
 

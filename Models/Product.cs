@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace NorthwindCorp.Models
@@ -21,17 +22,17 @@ namespace NorthwindCorp.Models
 
     public string CategoryName { get; set; }
 
-    [StringLength(1000)]
+    [StringLength(100)]
     public string QuantityPerUnit { get; set; }
 
-    [DataType(DataType.Currency, ErrorMessage = "Should be a number")]
+    [DataType(DataType.Currency)]
     [Range(0, 100000, ErrorMessage = "Provide a correct price please")]
     public decimal? UnitPrice { get; set; }
-
+    [Range(0, 1000)]
     public short? UnitsInStock { get; set; }
-    
+    [Range(0, 1000)]
     public short? UnitsOnOrder { get; set; }
-
+    [Range(0, 10)]
     public short? ReorderLevel { get; set; }
 
     public bool Discontinued { get; set; }
