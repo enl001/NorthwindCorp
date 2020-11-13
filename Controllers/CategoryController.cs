@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using NorthwindCorp.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using NorthwindCorp.Services;
 
 namespace NorthwindCorp.Controllers
@@ -25,13 +20,5 @@ namespace NorthwindCorp.Controllers
       var categoryList = _categoryService.GetAllCategories();
       return View(categoryList);
     }
-
-    //[HttpGet("/list")]
-    //[ProducesResponseType(200)]
-    //public IActionResult GetCategoryList()
-    //{
-    //  var categoryList = _categoryService.GetAllCategories();
-    //  return View(categoryList);
-    //}
   }
 }

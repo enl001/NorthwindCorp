@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace NorthwindCorp.DTO
 {
   public class ProductDto
   {
     [Key]
-    public int ProductID { get; set; }
-    public string ProductName { get; set; }
-    public int? SupplierID { get; set; }
-    public int? CategoryID { get; set; }
-    public string QuantityPerUnit { get; set; }
-    public decimal? UnitPrice { get; set; }
-    public short? UnitsInStock { get; set; }
-    public short? UnitsOnOrder { get; set; }
-    public short? ReorderLevel { get; set; }
-    public bool Discontinued { get; set; }
+    public virtual int ProductID { get; set; }
+    public virtual string ProductName { get; set; }
+    public virtual int? SupplierID { get; set; }
+    public virtual int? CategoryID { get; set; }
+    public virtual string QuantityPerUnit { get; set; }
+    public virtual decimal? UnitPrice { get; set; }
+    public virtual short? UnitsInStock { get; set; }
+    public virtual short? UnitsOnOrder { get; set; }
+    public virtual short? ReorderLevel { get; set; }
+    public virtual bool Discontinued { get; set; }
   }
 }

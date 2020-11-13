@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using NorthwindCorp.Data;
 using NorthwindCorp.DTO;
@@ -84,7 +80,7 @@ namespace NorthwindCorp.Services
 
     public Product GetProductById(int id)
     {
-      var product = (from p in _northwindDataContext.Products
+      var products = (from p in _northwindDataContext.Products
                      join c in _northwindDataContext.Categories
                        on p.CategoryID equals c.CategoryId
                      join s in _northwindDataContext.Suppliers
@@ -104,9 +100,12 @@ namespace NorthwindCorp.Services
                        UnitsOnOrder = p.UnitsOnOrder,
                        ReorderLevel = p.ReorderLevel,
                        Discontinued = p.Discontinued
-                     });
+                     }).ToList();
 
-      return product.FirstOrDefault(null);
+
+      return (products.Any())
+        ? products[0]
+        : null;
     }
 
     public bool CreateNewProduct(CreateProductModel createProductModel)
@@ -124,11 +123,33 @@ namespace NorthwindCorp.Services
         ReorderLevel = createProductModel.Product.ReorderLevel,
         Discontinued = createProductModel.Product.Discontinued
       };
-      var res = _northwindDataContext.Products.Add(product);
+
+      _northwindDataContext.Products.Add(product);
       var result = _northwindDataContext.SaveChanges();
       return result > 0;
     }
-    
+
+    public bool UpdateProduct(CreateProductModel updateProduct, int id)
+    {
+      ProductDto product = new ProductDto
+      {
+        ProductID = id,
+        ProductName = updateProduct.Product.Name,
+        SupplierID = updateProduct.Product.SupplierId,
+        CategoryID = updateProduct.Product.CategoryId,
+        QuantityPerUnit = updateProduct.Product.QuantityPerUnit,
+        UnitPrice = updateProduct.Product.UnitPrice,
+        UnitsInStock = updateProduct.Product.UnitsInStock,
+        UnitsOnOrder = updateProduct.Product.UnitsOnOrder,
+        ReorderLevel = updateProduct.Product.ReorderLevel,
+        Discontinued = updateProduct.Product.Discontinued
+      };
+
+      _northwindDataContext.Products.Update(product);
+      var result = _northwindDataContext.SaveChanges();
+      return result > 0;
+    }
+
     public CreateProductModel CreateNewProductModel()
     {
       var supplierList = _supplierService.GetSelectListSuppliers();

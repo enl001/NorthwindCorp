@@ -1,0 +1,13 @@
+﻿@model NorthwindCorp.Models.CreateProductModel
+
+<h2 class="display-5 font-weight-bold text-center">Update Product</h2>
+<form asp-action="UpdateProduct" asp-controller="Product">
+  <div asp-validation-summary="ModelOnly" class="input-validation-error"></div>
+
+  @await Html.PartialAsync("_CreateUpdateFormContent")
+
+  <p>
+    <button type="submit" class="btn btn-primary mb-2">Update Product</button>
+  </p>
+
+</form>

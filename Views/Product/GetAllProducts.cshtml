@@ -3,6 +3,13 @@
   ViewData["Title"] = "Product Page";
 }
 
+<script type="text/javascript">
+  //Initialize tooltip with jQuery
+  $(document).ready(function () {
+    $('.tooltips').tooltip();
+  });
+</script>
+
 <div class="text-center">
   <h1 class="display-4 font-weight-bold">Our products</h1>
 </div>
@@ -28,7 +35,11 @@
     {
       <tr>
         <th scope="row">@i</th>
-        <td>@product.Name</td>
+        <td>
+          <div class="tooltips" data-placement="left" title="Update product">
+            @Html.ActionLink(@product.Name, "UpdateProduct", "Product", new {id = @product.Id})
+          </div>
+        </td>
         <td>@product.SupplierName</td>
         <td>@product.CategoryName</td>
         <td>@product.QuantityPerUnit</td>
@@ -38,7 +49,7 @@
         <td>@product.ReorderLevel</td>
         <td>@Format.ToYesNo(@product.Discontinued)</td>
       </tr>
-      { i++;}
+      { i++; }
     }
   </tbody>
 </table>
