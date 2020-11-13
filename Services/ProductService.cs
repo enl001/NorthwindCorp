@@ -15,15 +15,18 @@ namespace NorthwindCorp.Services
   {
     private readonly NorthwindDataContext _northwindDataContext;
     private readonly IConfiguration _configuration;
-    private CategoryService _categoryService;
-    private SupplierService _supplierService;
+    private readonly CategoryService _categoryService;
+    private readonly SupplierService _supplierService;
+    private readonly ConfigurationService _configurationService;
 
     public ProductService(
       NorthwindDataContext northwindDataContext,
       IConfiguration configuration,
       CategoryService categoryService,
-      SupplierService supplierService)
+      SupplierService supplierService,
+      ConfigurationService configurationService)
     {
+      _configurationService = configurationService;
       _supplierService = supplierService;
       _categoryService = categoryService;
       _configuration = configuration;
@@ -32,7 +35,7 @@ namespace NorthwindCorp.Services
 
     public IEnumerable<Product> GetAllProducts()
     {
-      var products = _configuration.GetValue<int>("AmountOfProductsToShow") > 0
+      var products = _configurationService.GetValue<int>("AmountOfProductsToShow") > 0
         ? (from p in _northwindDataContext.Products
            join c in _northwindDataContext.Categories
              on p.CategoryID equals c.CategoryId
@@ -53,7 +56,7 @@ namespace NorthwindCorp.Services
              UnitsOnOrder = p.UnitsOnOrder,
              ReorderLevel = p.ReorderLevel,
              Discontinued = p.Discontinued
-           }).Take(_configuration.GetValue<int>("AmountOfProductsToShow")).ToList()
+           }).Take(_configurationService.GetValue<int>("AmountOfProductsToShow")).ToList()
         : (from p in _northwindDataContext.Products
            join c in _northwindDataContext.Categories
              on p.CategoryID equals c.CategoryId
