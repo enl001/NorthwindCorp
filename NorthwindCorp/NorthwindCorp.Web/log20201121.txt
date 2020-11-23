@@ -1,0 +1,78 @@
+2020-11-21 21:40:58.391 +03:00 [INF] Starting up application
+2020-11-21 21:40:58.473 +03:00 [INF] Base directory: C:\Learning\ASPNetMentoring\NorthwindCorp\NorthwindCorp\NorthwindCorp.Web\bin\Debug\netcoreapp3.1\
+2020-11-21 21:40:59.378 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:40:59.385 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:03.262 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:03.262 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:04.334 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.310 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.402 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.421 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.471 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.474 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.641 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.641 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.641 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.641 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.650 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.650 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.650 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.650 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.651 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.651 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.651 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.651 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.655 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:41:06.660 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:52:15.967 +03:00 [INF] Starting up application
+2020-11-21 21:52:16.047 +03:00 [INF] Base directory: C:\Learning\ASPNetMentoring\NorthwindCorp\NorthwindCorp\NorthwindCorp.Web\bin\Debug\netcoreapp3.1\
+2020-11-21 21:52:16.693 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 21:52:16.701 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:11:02.561 +03:00 [INF] Starting up application
+2020-11-21 22:11:02.630 +03:00 [INF] Base directory: C:\Learning\ASPNetMentoring\NorthwindCorp\NorthwindCorp\NorthwindCorp.Web\bin\Debug\netcoreapp3.1\
+2020-11-21 22:11:03.205 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:11:03.214 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:15.421 +03:00 [INF] Starting up application
+2020-11-21 22:23:15.489 +03:00 [INF] Base directory: C:\Learning\ASPNetMentoring\NorthwindCorp\NorthwindCorp\NorthwindCorp.Web\bin\Debug\netcoreapp3.1\
+2020-11-21 22:23:16.170 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:16.178 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:18.685 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:20.691 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:20.780 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:20.785 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:20.803 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:20.805 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.016 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.016 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.016 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.016 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.024 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.026 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.026 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.028 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.028 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.030 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.032 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.050 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.051 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:21.057 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.144 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.155 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.198 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.199 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.204 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.207 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.219 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.219 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.220 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.223 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.222 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.232 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.234 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.234 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.235 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.236 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.237 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.238 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.240 +03:00 [INF] read: 'IsLoggingControllerActions' = False
+2020-11-21 22:23:51.254 +03:00 [INF] read: 'IsLoggingControllerActions' = False

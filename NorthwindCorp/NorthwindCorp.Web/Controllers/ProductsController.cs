@@ -114,13 +114,7 @@ namespace NorthwindCorp.Web.Controllers
         this.AddSelectListsToProduct(ref product);
         return View(product);
       }
-
-      //if(_productService.GetProductById(id) == null)
-      //{
-      //  _logger.LogError($"No such product with id={id}");
-      //  return RedirectToAction("Error", "Home");
-      //}
-
+      
       product.ProductId = id;
       var result = _productService.UpdateProduct(product);
 

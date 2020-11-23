@@ -11,8 +11,23 @@
   @foreach (var category in Model)
   {
     <li class="list-group-item list-group-item-action w-50 cursor-pointer">
-      <p class="text-uppercase font-weight-bold">@category.CategoryName</p>
-      <p class="font-weight-light">@category.Description</p>
+      <div class="row">
+        <div class="col-sm-9" style="display: inline-block">
+          <p class="text-uppercase font-weight-bold">@category.CategoryName</p>
+          <p class="font-weight-light">@category.Description</p>
+          <p class="font-weight-light">
+            @Html.ActionLink($"{@category.CategoryName} image", "GetImage", "Categories", new { id = @category.CategoryId })
+          </p>
+
+        </div>
+        <div class="col-sm-3" style="display: inline-block">
+          <img src="@Url.Action("GetImage", "Categories", new {id = @category.CategoryId})"
+               alt="Category image" width="100px" height="100px" />
+          <p class="font-weight-light">
+            @Html.ActionLink($"Change image", "UploadImage", "Categories", new { id = @category.CategoryId })
+          </p>
+        </div>
+      </div>
     </li>
   }
 </ul>

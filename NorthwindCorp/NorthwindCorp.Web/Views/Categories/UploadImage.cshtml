@@ -1,0 +1,18 @@
+﻿@model NorthwindCorp.Web.Models.UploadImage
+<form asp-action="UploadImage" asp-controller="Categories"
+      enctype="multipart/form-data" method="post" id="FileUpload">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+  <dl>
+    <dt>
+      <label asp-for="@Model.Image"></label>
+    </dt>
+    <dd>
+      <div class="form-group">
+        <input type="file" asp-for="@Model.Image"/>
+        <span asp-validation-for="@Model.Image"></span>
+      </div>
+    </dd>
+  </dl>
+  <input asp-page-handler="Upload" class="btn btn-primary" type="submit" value="Upload" />
+</form>
+

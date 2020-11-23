@@ -10,17 +10,18 @@ namespace NorthwindCorp.Web
   {
     public static void Main(string[] args)
     {
-      Log.Logger = new LoggerConfiguration()
-        .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-        .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Warning)
-        .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
-        .Enrich.FromLogContext()
-        .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-        .CreateLogger();
+      var builder = CreateHostBuilder(args).Build();
 
+      Log.Logger = new LoggerConfiguration()
+              .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+              .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", LogEventLevel.Warning)
+              .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+              .Enrich.FromLogContext()
+              .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+              .CreateLogger();
+      
       try
       {
-        var builder = CreateHostBuilder(args).Build();
         var env = builder.Services.GetService(typeof(IWebHostEnvironment));
         var baseDir = AppDomain.CurrentDomain.BaseDirectory;
         Log.Information("Starting up application");

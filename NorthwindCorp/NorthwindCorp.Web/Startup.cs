@@ -1,3 +1,4 @@
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using NorthwindCorp.Core.Repository.Data;
 using NorthwindCorp.Core.Repository.Services;
 using NorthwindCorp.Core.Repository.Services.Interfaces;
+using NorthwindCorp.Web.Filters;
+using NorthwindCorp.Web.Middleware;
 using NorthwindCorp.Web.Services;
 using NorthwindCorp.Web.Services.Interfaces;
 
@@ -28,7 +31,10 @@ namespace NorthwindCorp.Web
 
       services.AddDbContext<NorthwindContext>();
 
-      services.AddControllersWithViews();
+      services.AddControllersWithViews(options =>
+      {
+        options.Filters.Add(typeof(TimeLoggingFilter));
+      });
 
       services.AddSingleton<IConfigurationService, ConfigurationService>();
       services.AddTransient<FormattingService>();
@@ -40,7 +46,8 @@ namespace NorthwindCorp.Web
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+      IHostApplicationLifetime lifetime)
     {
       if (env.IsDevelopment())
       {
@@ -52,6 +59,11 @@ namespace NorthwindCorp.Web
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
+
+      lifetime.ApplicationStopped.Register(ClearCache);
+
+      app.UseMiddleware<ImageCacheMiddleware>();
+
       app.UseStatusCodePages();
 
       app.UseSwagger();
@@ -68,12 +80,31 @@ namespace NorthwindCorp.Web
 
       app.UseAuthorization();
 
+
       app.UseEndpoints(endpoints =>
       {
+        endpoints.MapControllerRoute(
+          name: "image",
+          pattern: "image/{id}",
+          defaults: new { controller = "Categories", action = "GetImage"});
         endpoints.MapControllerRoute(
                   name: "default",
                   pattern: "{controller=Home}/{action=Index}/{id?}");
       });
+    }
+
+    private void ClearCache()
+    {
+      var cahcePath = Configuration.GetValue<string>("CachePath");
+      if (Directory.Exists(cahcePath))
+      {
+
+        foreach (var file in Directory.GetFiles(cahcePath))
+        {
+          File.Delete(file);
+        }
+
+      }
     }
   }
 }

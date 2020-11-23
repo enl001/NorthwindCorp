@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthwindCorp.Core", "North
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthwindCorp.Core.Repository", "NorthwindCorp.Core.Repository\NorthwindCorp.Core.Repository.csproj", "{471CED9D-3C60-4296-9987-6B56C6A1B1CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindCorp.Web.UnitTests", "NorthwindCorp.Web.UnitTests\NorthwindCorp.Web.UnitTests.csproj", "{F199E23D-EB4A-4B0C-9250-365573FC708A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{471CED9D-3C60-4296-9987-6B56C6A1B1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{471CED9D-3C60-4296-9987-6B56C6A1B1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{471CED9D-3C60-4296-9987-6B56C6A1B1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F199E23D-EB4A-4B0C-9250-365573FC708A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F199E23D-EB4A-4B0C-9250-365573FC708A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F199E23D-EB4A-4B0C-9250-365573FC708A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F199E23D-EB4A-4B0C-9250-365573FC708A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

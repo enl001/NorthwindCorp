@@ -19,5 +19,23 @@ namespace NorthwindCorp.Core.Repository.Services
     {
       return _northwindContext.Categories;
     }
+
+    public Category GetCategoryById(int id)
+    {
+      var categories = this.GetCategories()
+        .Where(category => category.CategoryId == id).ToList();
+
+      return (categories.Any())
+        ? categories[0]
+        : null;
+    }
+
+    public bool UpdateCategory(Category category)
+    {
+      _northwindContext.Categories.Update(category);
+      var result = _northwindContext.SaveChanges();
+      return result > 0;
+    }
+
   }
 }
