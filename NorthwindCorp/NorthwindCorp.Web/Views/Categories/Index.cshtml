@@ -6,7 +6,6 @@
 <div class="text-center">
   <h1 class="display-4 font-weight-bold">Categories</h1>
 </div>
-
 <ul class="list-group  align-items-center ">
   @foreach (var category in Model)
   {
@@ -16,9 +15,10 @@
           <p class="text-uppercase font-weight-bold">@category.CategoryName</p>
           <p class="font-weight-light">@category.Description</p>
           <p class="font-weight-light">
-            @Html.ActionLink($"{@category.CategoryName} image", "GetImage", "Categories", new { id = @category.CategoryId })
+            @Html.ActionLink($"{@category.CategoryName} image", "GetImage", "Categories", new { id = @category.CategoryId }, new { target = "_blank" })
           </p>
-
+          <a northwind-id="@category.CategoryId">@category.CategoryName image</a>
+          @Html.NorthwindImageLink(@category.CategoryId, $"{@category.CategoryName} image")
         </div>
         <div class="col-sm-3" style="display: inline-block">
           <img src="@Url.Action("GetImage", "Categories", new {id = @category.CategoryId})"
@@ -31,3 +31,7 @@
     </li>
   }
 </ul>
+
+@section Footer {
+  <div class="text-danger text-center">Sorry, You can't edit categories now.</div>
+}

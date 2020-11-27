@@ -1,0 +1,10 @@
+﻿@model NorthwindCorp.Web.Models.Breadcrumbs
+
+<p class="text-center text-black-50">
+  @Html.ActionLink("Home", "Index", "Home") >
+  @Html.ActionLink($"{@Model.Controller}", "Index", $"{@Model.Controller}")
+  @if (Model.Action != "Index")
+  {
+    <span> > @Model.Action</span>
+  }
+</p>

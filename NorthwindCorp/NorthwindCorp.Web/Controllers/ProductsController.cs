@@ -145,6 +145,5 @@ namespace NorthwindCorp.Web.Controllers
       product.Suppliers = supplierSelectList;
       product.Categories = categorySelectList;
     }
-
   }
 }

@@ -21,19 +21,23 @@
         </div>
       </div>
     </nav>
-    @RenderSection("Header", required: false)
   </header>
-  <vc:breadcrumbs>
-
-  </vc:breadcrumbs>
   <div class="container">
     <main role="main" class="pb-3">
       @RenderBody()
     </main>
   </div>
+  <div class="d-flex">
+    <ul class="fixed-bottom list-group list-group-horizontal mx-auto justify-content-center" style="margin-bottom: 60px; list-style: none">
+      <li><img class="list-group-item" src="images/1.jpg" alt="1.jpg" width="100" height="100" /></li>
+      <li><img class="list-group-item" src="images/2.jpg" alt="2.jpg" width="100" height="100" /></li>
+      <li><img class="list-group-item" src="images/3.jpg" alt="3.jpg" width="100" height="100" /></li>
+      <li><img class="list-group-item" src="images/4.png" alt="4.jpg" width="100" height="100" /></li>
+      <li><img class="list-group-item" src="images/5.png" alt="5.jpg" width="100" height="100" /></li>
+    </ul>
+  </div>
 
-  <footer class="border-top footer text-muted bg-dark fixed-bottom">
-    @RenderSection("Footer", required: false)
+  <footer class="border-top footer text-muted bg-dark">
     <div class="container">
       &copy; 2020 - NorthwindCorp
     </div>
@@ -41,6 +45,5 @@
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="~/js/site.js" asp-append-version="true"></script>
-  @RenderSection("Scripts", required: false)
 </body>
 </html>
