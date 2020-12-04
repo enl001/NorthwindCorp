@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Product App</title>
+</head>
+<body>
+
+  <div>
+    <h2>Calls to APIs</h2>
+    <div style="width: 100%; display: flex;">
+      <ul style="width: 50%; display: inline-block" id="categories"></ul>
+      <ul style="width: 50%; display: inline-block" id="products"></ul>
+    </div>
+  </div>
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+  <script>
+    var uriProd = 'https://localhost:44385/api/products';
+    var uriCat = 'https://localhost:44385/api/categories';
+    $(document).ready(
+      function () {
+        // Send an AJAX request
+        $.getJSON(uriProd)
+          .done(function (data) {
+            // On success, 'data' contains a list of products.
+            $.each(data, function (key, item) {
+              // Add a list item for the product.
+              $('<li>', { text: formatProduct(item) }).appendTo($('#products'));
+            });
+          });
+
+        $.getJSON(uriCat)
+          .done(function (data) {
+            // On success, 'data' contains a list of products.
+            $.each(data, function (key, item) {
+              // Add a list item for the product.
+              $('<li>', { text: formatCategory(item) }).appendTo($('#categories'));
+            });
+          });
+
+      });
+
+    function formatProduct(item) {
+      return `Name: ${item.productName}; In Stock: ${item.unitsInStock || 0}`;
+    }
+    function formatCategory(item) {
+      return `Name: ${item.categoryName}; Description: ${item.description || ""}`;
+    }
+  </script>
+</body>
+</html>

@@ -49,12 +49,20 @@ namespace NorthwindCorp.Web.Middleware
 
     public async Task InvokeAsync(HttpContext context)
     {
+
+      var controller = context.Request.RouteValues;
+
+
+
       Stream originalBody = context.Response.Body;
 
       var requestPath = context.Request.Path;
       var returnFile = false;
       var imageData = new byte[] { };
 
+
+
+      
       lock (folderLock)
       {
         if (_imagePathDictionary.ContainsKey(requestPath))

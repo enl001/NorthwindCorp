@@ -12,7 +12,7 @@ namespace NorthwindCorp.Web.Controllers
   public class CategoriesController : Controller
   {
     private readonly ICategoryService _categoryService;
-    private ILogger<CategoriesController> _logger;
+    private readonly ILogger<CategoriesController> _logger;
 
     public CategoriesController(ICategoryService categoryService, ILogger<CategoriesController> logger)
     {

@@ -16,6 +16,8 @@ namespace NorthwindCorp.Web
 {
   public class Startup
   {
+
+    readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
     public Startup(IConfiguration configuration)
     {
       Configuration = configuration;
@@ -30,6 +32,16 @@ namespace NorthwindCorp.Web
       services.AddSwaggerGen();
 
       services.AddDbContext<NorthwindContext>();
+
+      services.AddCors(options =>
+      {
+        options.AddPolicy(name: MyAllowSpecificOrigins,
+          builder =>
+          {
+            builder.WithOrigins("https://localhost:44385", "https://localhost:44319");
+          });
+      });
+
 
       services.AddControllersWithViews(options =>
       {
@@ -59,10 +71,17 @@ namespace NorthwindCorp.Web
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
+      app.UseCors(MyAllowSpecificOrigins);
 
       lifetime.ApplicationStopped.Register(ClearCache);
 
-      app.UseMiddleware<ImageCacheMiddleware>();
+      
+      app.UseWhen(context => context.Request.Path.StartsWithSegments("/categories"), appBuilder =>
+      {
+        appBuilder.UseMiddleware<ImageCacheMiddleware>();
+      });
+
+      //app.UseMiddleware<ImageCacheMiddleware>();
 
       app.UseStatusCodePages();
 

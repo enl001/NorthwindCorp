@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NorthwindCorp.Core.Repository.Data;
 using NorthwindCorp.Core.Repository.Models;
 using NorthwindCorp.Core.Repository.Services.Interfaces;
@@ -19,6 +22,12 @@ namespace NorthwindCorp.Core.Repository.Services
     {
       return _northwindContext.Categories;
     }
+
+    public async Task<IEnumerable<Category>> GetCategoriesAsync()
+    {
+      return await _northwindContext.Categories.ToListAsync();
+    }
+    
 
     public Category GetCategoryById(int id)
     {
