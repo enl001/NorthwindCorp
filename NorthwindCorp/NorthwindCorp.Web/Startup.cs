@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using NorthwindCorp.Core.Repository.Data;
 using NorthwindCorp.Core.Repository.Services;
 using NorthwindCorp.Core.Repository.Services.Interfaces;
@@ -29,7 +30,19 @@ namespace NorthwindCorp.Web
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddSingleton<IConfiguration>(Configuration);
-      services.AddSwaggerGen();
+      services.AddSwaggerGen(c =>
+      {
+        c.SwaggerDoc("v1",
+          new OpenApiInfo
+          {
+            Title = "My API - V1",
+            Version = "v1"
+          }
+        );
+
+        var filePath = Path.Combine(System.AppContext.BaseDirectory, "NorthwindCorp.Web.xml");
+        c.IncludeXmlComments(filePath);
+      });
 
       services.AddDbContext<NorthwindContext>();
 

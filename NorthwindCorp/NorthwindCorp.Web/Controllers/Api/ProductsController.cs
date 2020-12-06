@@ -31,6 +31,10 @@ namespace NorthwindCorp.Web.Controllers.Api
       _supplierService = supplierService;
     }
 
+    /// <summary>
+    /// Retrieves all products
+    /// </summary>
+    /// <response code="200">Products retrieved</response>
     [HttpGet]
     [ProducesResponseType(200)]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
@@ -62,11 +66,18 @@ namespace NorthwindCorp.Web.Controllers.Api
       return Ok(result);
     }
 
+    /// <summary>
+    /// Retrieves a specific product by unique id
+    /// </summary>
+    /// <param name="id" example="1">The product id</param>
+    /// <response code="200">Product retrieved</response>
+    /// <response code="400">Product has invalid id</response>
+    /// <response code="404">Product has invalid id</response>
     [HttpGet("{id}", Name = "GetProductById")]
     [ProducesResponseType(200)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<ActionResult<Product>> GetProductById(int id)
+    public async Task<ActionResult<Product>> GetProductById([FromRoute] int id)
     {
       try
       {
@@ -85,6 +96,12 @@ namespace NorthwindCorp.Web.Controllers.Api
       return BadRequest();
     }
 
+    /// <summary>
+    /// Create product
+    /// </summary>
+    /// <param name="productToCreate">The product</param>
+    /// <response code="201">Product created</response>
+    /// <response code="400">Product has missing/invalid values</response>
     [HttpPost("", Name = "CreateProduct")]
     [ProducesResponseType(201)]
     [ProducesResponseType(404)]
@@ -104,10 +121,17 @@ namespace NorthwindCorp.Web.Controllers.Api
       return BadRequest();
     }
 
+    /// <summary>
+    /// Update product
+    /// </summary>
+    /// <param name="productToUpdate">The product</param>
+    /// <param name="id">The product id</param>
+    /// <response code="204">Product updated</response>
+    /// <response code="404">No product with such id</response>
     [HttpPut("{id}", Name = "PutProduct")]
-    [ProducesResponseType(201)]
+    [ProducesResponseType(204)]
     [ProducesResponseType(404)]
-    public async Task<ActionResult<Product>> PutProduct(int id, [FromBody] Product productToUpdate)
+    public async Task<ActionResult<Product>> PutProduct([FromRoute] int id, [FromBody] Product productToUpdate)
     {
       try
       {
@@ -133,12 +157,18 @@ namespace NorthwindCorp.Web.Controllers.Api
       return NoContent();
     }
 
-
+    /// <summary>
+    /// Delete product by id
+    /// </summary>
+    /// <param name="id" example="1">The product id</param>
+    /// <response code="200">Product deleted</response>
+    /// <response code="400">Something goes wrong</response>
+    /// <response code="404">Product not found</response>
     [HttpDelete("{id}", Name = "DeleteProduct")]
     [ProducesResponseType(200)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<ActionResult<Product>> DeleteProduct(int id)
+    public async Task<ActionResult<Product>> DeleteProduct([FromRoute] int id)
     {
       try
       {

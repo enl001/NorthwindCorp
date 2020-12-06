@@ -9,10 +9,15 @@ namespace NorthwindCorp.Core.Repository.Services.Interfaces
   {
     IQueryable<Category> GetCategories();
 
-    Task<IEnumerable<Category>> GetCategoriesAsync();
 
     Category GetCategoryById(int id);
 
     bool UpdateCategory(Category category);
+
+    //api
+    Task<IEnumerable<Category>> GetCategoriesAsync();
+    Task<Category> GetCategoryByIdAsync(int id);
+    Task UpdateCategoryAsync(Category category);
+    Task<bool> CategoryIsExistsAsync(int id);
   }
 }

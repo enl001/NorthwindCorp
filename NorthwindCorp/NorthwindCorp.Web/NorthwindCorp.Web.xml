@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NorthwindCorp.Web</name>
+    </assembly>
+    <members>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.ProductsController.GetProducts">
+            <summary>
+            Retrieves all products
+            </summary>
+            <response code="200">Products retrieved</response>
+        </member>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.ProductsController.GetProductById(System.Int32)">
+            <summary>
+            Retrieves a specific product by unique id
+            </summary>
+            <param name="id" example="1">The product id</param>
+            <response code="200">Product retrieved</response>
+            <response code="400">Product has invalid id</response>
+            <response code="404">Product has invalid id</response>
+        </member>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.ProductsController.CreateProduct(NorthwindCorp.Core.Repository.Models.Product)">
+            <summary>
+            Create product
+            </summary>
+            <param name="productToCreate">The product</param>
+            <response code="201">Product created</response>
+            <response code="400">Product has missing/invalid values</response>
+        </member>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.ProductsController.PutProduct(System.Int32,NorthwindCorp.Core.Repository.Models.Product)">
+            <summary>
+            Update product
+            </summary>
+            <param name="productToUpdate">The product</param>
+            <param name="id">The product id</param>
+            <response code="204">Product updated</response>
+            <response code="404">No product with such id</response>
+        </member>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.ProductsController.DeleteProduct(System.Int32)">
+            <summary>
+            Delete product by id
+            </summary>
+            <param name="id" example="1">The product id</param>
+            <response code="200">Product deleted</response>
+            <response code="400">Something goes wrong</response>
+            <response code="404">Product not found</response>
+        </member>
+    </members>
+</doc>

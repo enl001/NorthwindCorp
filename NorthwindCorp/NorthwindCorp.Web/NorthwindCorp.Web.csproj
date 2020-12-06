@@ -5,6 +5,11 @@
     <UserSecretsId>0794ef74-bb58-45af-875f-e8358f8e3621</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Learning\ASPNetMentoring\NorthwindCorp\NorthwindCorp\NorthwindCorp.Web\NorthwindCorp.Web.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Services\NewFolder\**" />
     <Content Remove="Services\NewFolder\**" />

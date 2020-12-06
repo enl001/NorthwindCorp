@@ -22,13 +22,7 @@ namespace NorthwindCorp.Core.Repository.Services
     {
       return _northwindContext.Categories;
     }
-
-    public async Task<IEnumerable<Category>> GetCategoriesAsync()
-    {
-      return await _northwindContext.Categories.ToListAsync();
-    }
     
-
     public Category GetCategoryById(int id)
     {
       var categories = this.GetCategories()
@@ -46,5 +40,29 @@ namespace NorthwindCorp.Core.Repository.Services
       return result > 0;
     }
 
+    // api
+    public async Task<IEnumerable<Category>> GetCategoriesAsync()
+    {
+      return await _northwindContext.Categories.ToListAsync();
+    }
+
+    public async Task<Category> GetCategoryByIdAsync(int id)
+    {
+      var categories = await _northwindContext.Categories
+        .Where(category => category.CategoryId == id).ToListAsync();
+
+      return categories.FirstOrDefault();
+    }
+
+    public async Task UpdateCategoryAsync(Category category)
+    {
+      _northwindContext.Entry(category).State = EntityState.Modified;
+      await _northwindContext.SaveChangesAsync();
+    }
+
+    public async Task<bool> CategoryIsExistsAsync(int id)
+    {
+      return await _northwindContext.Categories.AnyAsync(c => c.CategoryId == id);
+    }
   }
 }
