@@ -14,28 +14,42 @@ namespace NorthwindCorp.Web.ViewComponents
   {
     public IViewComponentResult Invoke()
     {
-      var dd = ViewContext.RouteData.Routers;
-      string actionName;  
-      switch (ViewContext.RouteData.Values["action"].ToString())
+      string actionName = String.Empty;
+      string controller = String.Empty;
+      string page = String.Empty;
+      string area = String.Empty;
+      if (ViewContext.RouteData.Values.ContainsKey("action"))
       {
-        case "UploadImage":
-          actionName = "Upload Image";
-          break;
-        case "UpdateProduct":
-          actionName = "Update Product";
-          break;
-        case "CreateNewProduct":
-          actionName = "Create New Product";
-          break;
-        default:
-          actionName = ViewContext.RouteData.Values["action"].ToString();
-          break;
+        switch (ViewContext.RouteData.Values["action"].ToString())
+        {
+          case "UploadImage":
+            actionName = "Upload Image";
+            break;
+          case "UpdateProduct":
+            actionName = "Update Product";
+            break;
+          case "CreateNewProduct":
+            actionName = "Create New Product";
+            break;
+          default:
+            actionName = ViewContext.RouteData.Values["action"].ToString();
+            break;
+        }
+
+        controller = ViewContext.RouteData.Values["controller"].ToString();
+      }
+      if (ViewContext.RouteData.Values.ContainsKey("page"))
+      {
+        page = ViewContext.RouteData.Values["page"].ToString();
+        area = ViewContext.RouteData.Values["area"].ToString();
       }
 
       var breadcrumbs = new Breadcrumbs()
       {
-        Controller = ViewContext.RouteData.Values["controller"].ToString(),
-        Action = actionName
+        Controller = controller,
+        Action = actionName,
+        Page = page,
+        Area = area
       };
       return View(breadcrumbs);
     }

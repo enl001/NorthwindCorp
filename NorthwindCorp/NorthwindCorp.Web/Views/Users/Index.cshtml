@@ -1,0 +1,32 @@
+﻿@model List<NorthwindCorp.Web.Areas.Identity.Data.NorthwindCorpWebUser>
+
+<div class="text-center">
+  <h1 class="display-4 font-weight-bold">Users</h1>
+</div>
+@if (@Model != null && @Model.Any())
+{
+  <ul class="list-group  align-items-center ">
+    @foreach (var user in Model)
+    {
+      <li class="list-group-item list-group-item-action w-50 cursor-pointer">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>User Name:</p>
+            <p>Email:</p>
+            <p>Email Confirmed:</p>
+          </div>
+          <div class="col-sm-6">
+            <p>@user.UserName</p>
+            <p>@user.Email</p>
+            <p>@user.EmailConfirmed</p>
+          </div>
+          
+        </div>
+      </li>
+    }
+  </ul>
+}
+else
+{
+  <p>Nothing here</p>
+}

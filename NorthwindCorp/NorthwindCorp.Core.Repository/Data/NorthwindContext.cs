@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NorthwindCorp.Core.Repository.Models;
+﻿using NorthwindCorp.Core.Repository.Models;
+using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -83,7 +83,7 @@ namespace NorthwindCorp.Core.Repository.Data
 
       modelBuilder.Entity<Category>(entity =>
       {
-        entity.HasIndex(e => e.CategoryName, "CategoryName");
+        entity.HasIndex(e => e.CategoryName).HasName("CategoryName");
 
         entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
@@ -126,13 +126,13 @@ namespace NorthwindCorp.Core.Repository.Data
 
       modelBuilder.Entity<Customer>(entity =>
       {
-        entity.HasIndex(e => e.City, "City");
+        entity.HasIndex(e => e.City).HasName("City");
 
-        entity.HasIndex(e => e.CompanyName, "CompanyName");
+        entity.HasIndex(e => e.CompanyName).HasName("CompanyName");
 
-        entity.HasIndex(e => e.PostalCode, "PostalCode");
+        entity.HasIndex(e => e.PostalCode).HasName("PostalCode");
 
-        entity.HasIndex(e => e.Region, "Region");
+        entity.HasIndex(e => e.Region).HasName("Region");
 
         entity.Property(e => e.CustomerId)
                   .HasMaxLength(5)
@@ -227,9 +227,9 @@ namespace NorthwindCorp.Core.Repository.Data
 
       modelBuilder.Entity<Employee>(entity =>
       {
-        entity.HasIndex(e => e.LastName, "LastName");
+        entity.HasIndex(e => e.LastName).HasName("LastName");
 
-        entity.HasIndex(e => e.PostalCode, "PostalCode");
+        entity.HasIndex(e => e.PostalCode).HasName("PostalCode");
 
         entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
 
@@ -367,21 +367,21 @@ namespace NorthwindCorp.Core.Repository.Data
 
       modelBuilder.Entity<Order>(entity =>
       {
-        entity.HasIndex(e => e.CustomerId, "CustomerID");
+        entity.HasIndex(e => e.CustomerId).HasName("CustomerID");
 
-        entity.HasIndex(e => e.CustomerId, "CustomersOrders");
+        entity.HasIndex(e => e.CustomerId).HasName("CustomersOrders");
 
-        entity.HasIndex(e => e.EmployeeId, "EmployeeID");
+        entity.HasIndex(e => e.EmployeeId).HasName("EmployeeID");
 
-        entity.HasIndex(e => e.EmployeeId, "EmployeesOrders");
+        entity.HasIndex(e => e.EmployeeId).HasName("EmployeesOrders");
 
-        entity.HasIndex(e => e.OrderDate, "OrderDate");
+        entity.HasIndex(e => e.OrderDate).HasName("OrderDate");
 
-        entity.HasIndex(e => e.ShipPostalCode, "ShipPostalCode");
+        entity.HasIndex(e => e.ShipPostalCode).HasName("ShipPostalCode");
 
-        entity.HasIndex(e => e.ShippedDate, "ShippedDate");
+        entity.HasIndex(e => e.ShippedDate).HasName("ShippedDate");
 
-        entity.HasIndex(e => e.ShipVia, "ShippersOrders");
+        entity.HasIndex(e => e.ShipVia).HasName("ShippersOrders");
 
         entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -437,13 +437,13 @@ namespace NorthwindCorp.Core.Repository.Data
 
         entity.ToTable("Order Details");
 
-        entity.HasIndex(e => e.OrderId, "OrderID");
+        entity.HasIndex(e => e.OrderId).HasName("OrderID");
 
-        entity.HasIndex(e => e.OrderId, "OrdersOrder_Details");
+        entity.HasIndex(e => e.OrderId).HasName("OrdersOrder_Details");
 
-        entity.HasIndex(e => e.ProductId, "ProductID");
+        entity.HasIndex(e => e.ProductId).HasName("ProductID");
 
-        entity.HasIndex(e => e.ProductId, "ProductsOrder_Details");
+        entity.HasIndex(e => e.ProductId).HasName("ProductsOrder_Details");
 
         entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -548,15 +548,15 @@ namespace NorthwindCorp.Core.Repository.Data
 
       modelBuilder.Entity<Product>(entity =>
       {
-        entity.HasIndex(e => e.CategoryId, "CategoriesProducts");
+        entity.HasIndex(e => e.CategoryId).HasName("CategoriesProducts");
 
-        entity.HasIndex(e => e.CategoryId, "CategoryID");
+        entity.HasIndex(e => e.CategoryId).HasName("CategoryID");
 
-        entity.HasIndex(e => e.ProductName, "ProductName");
+        entity.HasIndex(e => e.ProductName).HasName("ProductName");
 
-        entity.HasIndex(e => e.SupplierId, "SupplierID");
+        entity.HasIndex(e => e.SupplierId).HasName("SupplierID");
 
-        entity.HasIndex(e => e.SupplierId, "SuppliersProducts");
+        entity.HasIndex(e => e.SupplierId).HasName("SuppliersProducts");
 
         entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -748,9 +748,9 @@ namespace NorthwindCorp.Core.Repository.Data
 
       modelBuilder.Entity<Supplier>(entity =>
       {
-        entity.HasIndex(e => e.CompanyName, "CompanyName");
+        entity.HasIndex(e => e.CompanyName).HasName("CompanyName");
 
-        entity.HasIndex(e => e.PostalCode, "PostalCode");
+        entity.HasIndex(e => e.PostalCode).HasName("PostalCode");
 
         entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
 

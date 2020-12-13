@@ -1,6 +1,8 @@
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,10 +10,12 @@ using Microsoft.OpenApi.Models;
 using NorthwindCorp.Core.Repository.Data;
 using NorthwindCorp.Core.Repository.Services;
 using NorthwindCorp.Core.Repository.Services.Interfaces;
+using NorthwindCorp.Web.Data;
 using NorthwindCorp.Web.Filters;
 using NorthwindCorp.Web.Middleware;
 using NorthwindCorp.Web.Services;
 using NorthwindCorp.Web.Services.Interfaces;
+
 
 namespace NorthwindCorp.Web
 {
@@ -44,7 +48,8 @@ namespace NorthwindCorp.Web
         c.IncludeXmlComments(filePath);
       });
 
-      services.AddDbContext<NorthwindContext>();
+      services.AddDbContext<NorthwindContext>();  
+
 
       services.AddCors(options =>
       {
@@ -60,12 +65,14 @@ namespace NorthwindCorp.Web
       {
         options.Filters.Add(typeof(TimeLoggingFilter));
       });
+      services.AddRazorPages();
 
       services.AddSingleton<IConfigurationService, ConfigurationService>();
       services.AddTransient<FormattingService>();
       services.AddScoped<ICategoryService, CategoryService>();
       services.AddScoped<IProductService, ProductService>();
       services.AddScoped<ISupplierService, SupplierService>();
+
 
 
     }
@@ -111,7 +118,8 @@ namespace NorthwindCorp.Web
       app.UseRouting();
 
       app.UseAuthorization();
-
+      app.UseAuthentication();
+      
 
       app.UseEndpoints(endpoints =>
       {
@@ -122,6 +130,7 @@ namespace NorthwindCorp.Web
         endpoints.MapControllerRoute(
                   name: "default",
                   pattern: "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapRazorPages();
       });
     }
 

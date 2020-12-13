@@ -4,6 +4,31 @@
         <name>NorthwindCorp.Web</name>
     </assembly>
     <members>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.CategoriesController.GetCategories">
+            <summary>
+            Retrieves all categories
+            </summary>
+            <response code="200">Categories retrieved</response>
+        </member>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.CategoriesController.GetImageFile(System.Int32)">
+            <summary>
+            Retrieves a specific category by unique id
+            </summary>
+            <param name="id" example="1">The category id</param>
+            <response code="200">Category retrieved</response>
+            <response code="400">Category has invalid id</response>
+            <response code="404">Category has invalid id</response>
+        </member>
+        <member name="M:NorthwindCorp.Web.Controllers.Api.CategoriesController.UpdateImage(Microsoft.AspNetCore.Http.IFormFile,System.Int32)">
+            <summary>
+            Update category image
+            </summary>
+            <param name="image">The image</param>
+            <param name="id">The category id</param>
+            <response code="204">Category updated</response>
+            <response code="400">Something goes wrong</response>
+            <response code="404">No category with such id</response>
+        </member>
         <member name="M:NorthwindCorp.Web.Controllers.Api.ProductsController.GetProducts">
             <summary>
             Retrieves all products

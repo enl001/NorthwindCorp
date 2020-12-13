@@ -6,9 +6,11 @@ using NorthwindCorp.Core.Repository.Models;
 using NorthwindCorp.Web.Services.Interfaces;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NorthwindCorp.Web.Controllers
 {
+  [Authorize]
   [Route("[controller]")]
   public class ProductsController : Controller
   {
@@ -32,6 +34,7 @@ namespace NorthwindCorp.Web.Controllers
       _configurationService = configurationService;
     }
 
+    [AllowAnonymous]
     [HttpGet()]
     [ProducesResponseType(200)]
     public IActionResult Index()
@@ -44,6 +47,7 @@ namespace NorthwindCorp.Web.Controllers
       return View(productList);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id:int}")]
     [ProducesResponseType(200)]
     public IActionResult GetProductById(int id)
