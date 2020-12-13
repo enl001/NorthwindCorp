@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
-using NorthwindCorp.Core.Repository.Services.Interfaces;
 using NorthwindCorp.Core.Repository.Models;
+using NorthwindCorp.Core.Repository.Services.Interfaces;
 using NorthwindCorp.Web.Services.Interfaces;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Authorization;
 
 namespace NorthwindCorp.Web.Controllers
 {
@@ -118,7 +118,7 @@ namespace NorthwindCorp.Web.Controllers
         this.AddSelectListsToProduct(ref product);
         return View(product);
       }
-      
+
       product.ProductId = id;
       var result = _productService.UpdateProduct(product);
 

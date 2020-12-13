@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NorthwindCorp.Core.DTO;
+using NorthwindCorp.Core.Helpers;
 using NorthwindCorp.Core.Repository.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using NorthwindCorp.Core.DTO;
-using NorthwindCorp.Core.Helpers;
 
 namespace NorthwindCorp.Web.Controllers.Api
 {
@@ -50,7 +50,7 @@ namespace NorthwindCorp.Web.Controllers.Api
     /// <response code="200">Category retrieved</response>
     /// <response code="400">Category has invalid id</response>
     /// <response code="404">Category has invalid id</response>
-    [HttpGet("{id:int}/image",Name = "GetImageFile")]
+    [HttpGet("{id:int}/image", Name = "GetImageFile")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     public async Task<ActionResult> GetImageFile([FromRoute] int id)
@@ -126,6 +126,7 @@ namespace NorthwindCorp.Web.Controllers.Api
           return NotFound();
         }
       }
+
       return BadRequest();
     }
   }

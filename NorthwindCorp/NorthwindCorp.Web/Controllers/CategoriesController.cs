@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NorthwindCorp.Core.Helpers;
@@ -9,6 +10,7 @@ using NorthwindCorp.Web.Models;
 
 namespace NorthwindCorp.Web.Controllers
 {
+  [Authorize]
   [Route("[controller]")]
   public class CategoriesController : Controller
   {
@@ -21,6 +23,7 @@ namespace NorthwindCorp.Web.Controllers
       _categoryService = categoryService;
     }
 
+    [AllowAnonymous]
     [HttpGet()]
     [ProducesResponseType(200)]
     public IActionResult Index()
@@ -28,7 +31,8 @@ namespace NorthwindCorp.Web.Controllers
       var categoryList = _categoryService.GetCategories().ToList();
       return View(categoryList);
     }
-    
+
+    [AllowAnonymous]
     [HttpGet("{id:int}/image")]
     [ProducesResponseType(200)]
     public IActionResult GetImage(int id)

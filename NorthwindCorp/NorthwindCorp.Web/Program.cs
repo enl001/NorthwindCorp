@@ -19,7 +19,7 @@ namespace NorthwindCorp.Web
               .Enrich.FromLogContext()
               .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
               .CreateLogger();
-      
+
       try
       {
         var env = builder.Services.GetService(typeof(IWebHostEnvironment));
